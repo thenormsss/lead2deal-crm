@@ -1,0 +1,512 @@
+:root {
+  --blue: #3ec1f0;
+  --blue-dark: #2ba9d8;
+  --yellow: #f6da6e;
+  --yellow-dark: #f0c93f;
+  --gray-bg: #a6a6a6;
+  --panel-bg: #ffffff;
+  --text-dark: #1c2b36;
+  --border-dotted: #cfcfcf;
+  --green: #9be564;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Arial, sans-serif;
+  background: var(--gray-bg);
+  color: var(--text-dark);
+}
+
+/* ---------- Login page ---------- */
+.login-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--gray-bg);
+}
+.login-card {
+  width: 100%;
+  max-width: 520px;
+  background: var(--blue);
+  border-radius: 12px;
+  padding: 0 0 32px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+}
+.login-brand {
+  text-align: center;
+  color: #fff;
+  font-weight: 800;
+  font-size: 28px;
+  letter-spacing: 1px;
+  padding: 28px 0 20px;
+  border-bottom: 1px dashed rgba(255,255,255,0.4);
+  margin-bottom: 24px;
+}
+.login-form-wrap {
+  background: #fff;
+  margin: 0 24px;
+  border-radius: 10px;
+  padding: 28px 32px 32px;
+}
+.login-form-wrap h2 {
+  text-align: center;
+  margin: 0 0 20px;
+  font-size: 22px;
+}
+.login-form-wrap label {
+  display: block;
+  font-weight: 700;
+  font-size: 13px;
+  margin: 14px 0 6px;
+}
+.login-form-wrap input {
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: 8px;
+  border: none;
+  background: #dcdcdc;
+  font-size: 14px;
+}
+.login-btn {
+  display: block;
+  margin: 26px auto 0;
+  padding: 12px 40px;
+}
+
+/* ---------- Buttons ---------- */
+.btn-yellow {
+  background: var(--yellow);
+  border: none;
+  border-radius: 20px;
+  padding: 11px 22px;
+  font-weight: 800;
+  cursor: pointer;
+  color: var(--text-dark);
+  transition: background 0.15s;
+}
+.btn-yellow:hover { background: var(--yellow-dark); }
+.btn-yellow:disabled { opacity: 0.6; cursor: not-allowed; }
+
+.btn-yellow-sm {
+  background: var(--yellow);
+  border: none;
+  border-radius: 16px;
+  padding: 6px 14px;
+  font-weight: 700;
+  font-size: 12px;
+  cursor: pointer;
+}
+.btn-yellow-sm:hover { background: var(--yellow-dark); }
+
+.btn-red-sm {
+  background: #d9534f;
+  border: none;
+  border-radius: 16px;
+  padding: 6px 14px;
+  font-weight: 700;
+  font-size: 12px;
+  cursor: pointer;
+  color: #fff;
+}
+.btn-red-sm:hover { background: #c9302c; }
+
+/* ---------- App shell ---------- */
+.app-layout {
+  display: flex;
+  min-height: 100vh;
+}
+
+.sidebar {
+  width: 250px;
+  background: var(--blue);
+  display: flex;
+  flex-direction: column;
+  padding: 24px 18px;
+  flex-shrink: 0;
+}
+.sidebar-brand {
+  color: #fff;
+  font-weight: 800;
+  font-size: 30px;
+  margin-bottom: 28px;
+  text-align: center;
+}
+.sidebar-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.sidebar-link {
+  color: var(--text-dark);
+  text-decoration: none;
+  font-weight: 800;
+  font-size: 14px;
+  padding: 12px 16px;
+  border-radius: 20px;
+}
+.sidebar-link.active {
+  background: var(--green);
+}
+.sidebar-user {
+  margin-top: auto;
+  color: rgba(28,43,54,0.75);
+  font-size: 12px;
+  padding: 0 16px;
+}
+.sidebar-logout {
+  margin-top: 10px;
+  background: transparent;
+  border: none;
+  color: var(--text-dark);
+  font-weight: 800;
+  font-size: 14px;
+  padding: 12px 16px;
+  cursor: pointer;
+  text-align: left;
+}
+
+.main-content {
+  flex: 1;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  overflow-x: auto;
+}
+
+.panel {
+  background: var(--panel-bg);
+  border-radius: 10px;
+  padding: 24px 28px;
+}
+.panel-title {
+  font-size: 18px;
+  margin: 0 0 16px;
+  letter-spacing: 0.5px;
+}
+.panel-header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* ---------- Dashboard ---------- */
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+  align-items: center;
+  justify-content: center;
+}
+.dashboard-card {
+  background: #dcdcdc;
+  border-radius: 10px;
+  padding: 50px 10px;
+  text-align: center;
+}
+.dashboard-number {
+  font-size: 52px;
+  font-weight: 800;
+}
+.dashboard-label {
+  font-weight: 700;
+  margin-top: 20px;
+  font-size: 12px;
+  letter-spacing: 0.3px;
+}
+
+/* ---------- Dashboard chart ---------- */
+.chart-wrap {
+  position: relative;
+  width: 100%;
+  height: 340px; /* matches the visual footprint of the data tables elsewhere in the app */
+}
+.chart-empty {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #888;
+  font-style: italic;
+}
+
+/* ---------- Forms ---------- */
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px 24px;
+  align-items: end;
+}
+.form-field label {
+  display: block;
+  font-weight: 700;
+  font-size: 12px;
+  margin-bottom: 6px;
+  letter-spacing: 0.3px;
+}
+.form-field input,
+.form-field select {
+  width: 100%;
+  padding: 11px 14px;
+  border-radius: 8px;
+  border: none;
+  background: #dcdcdc;
+  font-size: 14px;
+}
+.form-field input:disabled {
+  background: #ececec;
+  color: #888;
+  cursor: not-allowed;
+}
+.form-submit-field {
+  display: flex;
+  justify-content: right;
+  align-items: center;
+  grid-column: 1 / -1;
+}
+.form-error {
+  color: #c0392b;
+  font-weight: 700;
+  font-size: 13px;
+  margin-top: 10px;
+}
+
+/* ---------- Tables ---------- */
+.table-scroll { overflow-x: auto; }
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+.data-table th {
+  text-align: left;
+  padding: 10px 12px;
+  border-bottom: 2px solid var(--text-dark);
+  white-space: nowrap;
+  font-size: 13px;
+  text-align: center;
+}
+.data-table td {
+  padding: 10px 12px;
+  border-bottom: 1px dotted var(--border-dotted);
+  white-space: nowrap;
+  text-align: center;
+}
+.data-table.bordered th,
+.data-table.bordered td {
+  border: 1px solid #cfd8f0;
+}
+.empty-row {
+  text-align: center;
+  color: #888;
+  font-style: italic;
+}
+
+.task-check {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  border: 2px solid var(--text-dark);
+  cursor: pointer;
+  font-weight: 800;
+  color: #fff;
+}
+.task-check.done {
+  background: var(--green);
+  border-color: var(--green);
+  color: var(--text-dark);
+}
+
+/* ---------- Modal ---------- */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 50;
+}
+.modal-box {
+  background: #fff;
+  border-radius: 10px;
+  padding: 24px 28px;
+  width: 100%;
+  max-width: 640px;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+.modal-close {
+  background: none;
+  border: none;
+  font-size: 22px;
+  cursor: pointer;
+}
+.modal-note {
+  font-size: 12px;
+  color: #666;
+  margin-top: 14px;
+}
+
+.page-loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  font-weight: 700;
+}
+
+@media (max-width: 900px) {
+  .app-layout { flex-direction: column; }
+  .sidebar { width: 100%; flex-direction: row; flex-wrap: wrap; }
+  .form-grid { grid-template-columns: 1fr; }
+  .dashboard-grid { grid-template-columns: 1fr; }
+}
+
+/* ---------- Toast popups ---------- */
+.toast-stack {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 999;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-width: 360px;
+}
+.toast {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 14px 16px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #fff;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+  cursor: pointer;
+  animation: toast-in 0.2s ease-out;
+}
+.toast-error { background: #d9534f; }
+.toast-success { background: #4caf50; }
+.toast-close {
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 18px;
+  line-height: 1;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+@keyframes toast-in {
+  from { opacity: 0; transform: translateY(-8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ---------- Pipeline stage badges ---------- */
+.stage-badge {
+  display: inline-block;
+  padding: 6px 14px;
+  border-radius: 14px;
+  font-weight: 700;
+  font-size: 12px;
+  color: #fff;
+  background: #999;
+}
+.stage-badge-new { background: #6c9bd1; }
+.stage-badge-qualified { background: #4aa3c4; }
+.stage-badge-appointment { background: #f0a94e; }
+.stage-badge-offer { background: #f0da6e; color: #1c2b36; }
+.stage-badge-contract { background: #b06fd6; }
+.stage-badge-won { background: #4caf50; }
+.stage-badge-lost { background: #d9534f; }
+
+/* ---------- Pipeline swimlanes ---------- */
+.pipeline-stage-row {
+  display: flex;
+  align-items: stretch;
+  border-radius: 10px;
+  overflow: hidden;
+  background: #f2f2f2;
+  margin-bottom: 14px;
+}
+.pipeline-stage-label {
+  flex: 0 0 180px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 10px;
+  font-weight: 800;
+  font-size: 20px;
+  color: #000000;
+  text-align: center;
+  line-height: 1.3;
+}
+.pipeline-stage-count {
+  font-weight: 600;
+  opacity: 0.85;
+  font-size: 24px;
+  margin-top: 2px;
+}
+.pipeline-cards-lane {
+  flex: 1;
+  display: flex;
+  gap: 10px;
+  padding: 12px;
+  overflow-x: auto;
+  min-width: 0; /* required so flex children can actually shrink and trigger overflow-x */
+}
+.pipeline-card {
+  flex: 0 0 220px;
+  background: #fff;
+  border-radius: 8px;
+  padding: 12px 14px;
+  border-left: 4px solid #999;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+}
+.pipeline-card-seller {
+  font-weight: 800;
+  font-size: 18px;
+  margin-bottom: 4px;
+}
+.pipeline-card-address {
+  font-size: 18px;
+  color: #555;
+  margin-bottom: 4px;
+}
+.pipeline-card-placeholder {
+  font-style: italic;
+  color: #aaa;
+}
+.pipeline-card-phone {
+  font-size: 18px;
+  color: #888;
+}
+.pipeline-empty-lane {
+  display: flex;
+  align-items: center;
+  padding: 0 8px;
+  font-size: 13px;
+  color: #999;
+  font-style: italic;
+}
+
+@media (max-width: 700px) {
+  .pipeline-stage-row { flex-direction: column; }
+  .pipeline-stage-label { flex-direction: row; gap: 8px; }
+}
