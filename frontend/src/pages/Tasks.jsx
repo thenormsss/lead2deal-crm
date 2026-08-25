@@ -74,17 +74,17 @@ export default function Tasks() {
     }
   }
 
-  async function handleDelete(t) {
-    const confirmed = window.confirm(`Delete task "${t.task}" for ${t.seller_name}? This can't be undone.`);
-    if (!confirmed) return;
-    try {
-      await api.delete(`/tasks/${t.id}`);
-      showToast('Task deleted.', 'success');
-      loadAll();
-    } catch (err) {
-      showToast(err.response?.data?.message || 'Failed to delete task.', 'error');
-    }
-  }
+  // async function handleDelete(t) {
+  //   const confirmed = window.confirm(`Delete task "${t.task}" for ${t.seller_name}? This can't be undone.`);
+  //   if (!confirmed) return;
+  //   try {
+  //     await api.delete(`/tasks/${t.id}`);
+  //     showToast('Task deleted.', 'success');
+  //     loadAll();
+  //   } catch (err) {
+  //     showToast(err.response?.data?.message || 'Failed to delete task.', 'error');
+  //   }
+  // }
 
   return (
     <div className="app-layout">
@@ -92,16 +92,16 @@ export default function Tasks() {
       <main className="main-content">
         <div className="panel">
           <h1 className="panel-title">TO DO LIST</h1>
-          <p className="modal-note" style={{ marginTop: 0, marginBottom: 16 }}>
+          {/* <p className="modal-note" style={{ marginTop: 0, marginBottom: 16 }}>
             Tasks are created automatically as deals progress. You can reschedule or reassign an existing task,
             but its name, related record, and status (use the checkbox) aren't editable here.
-          </p>
+          </p> */}
           <div className="table-scroll">
             <table className="data-table">
               <thead>
                 <tr>
                   <th></th><th>TASK</th><th>RELATED RECORD</th><th>DUE DATE</th><th>DUE TIME</th>
-                  <th>ASSIGNED TO</th><th>STATUS</th><th colSpan={2}></th>
+                  <th>ASSIGNED TO</th><th>STATUS</th><th colSpan={1}></th>
                 </tr>
               </thead>
               <tbody>
@@ -132,16 +132,16 @@ export default function Tasks() {
                       <td>{t.assigned_to_name}</td>
                       <td>{t.status}</td>
                       <td><button className="btn-yellow-sm" onClick={() => openEdit(t)}>Edit Task</button></td>
-                      <td>
+                      {/* <td>
                         {!deleteLocked && (
                           <button className="btn-red-sm" onClick={() => handleDelete(t)}>Delete</button>
                         )}
-                      </td>
+                      </td> */}
                     </tr>
                   );
                 })}
                 {tasks.length === 0 && (
-                  <tr><td colSpan={9} className="empty-row">No tasks yet.</td></tr>
+                  <tr><td colSpan={8} className="empty-row">No tasks yet.</td></tr>
                 )}
               </tbody>
             </table>
@@ -185,10 +185,10 @@ export default function Tasks() {
               <button type="submit" className="btn-yellow">Update Task</button>
             </div>
           </form>
-          <p className="modal-note">
+          {/* <p className="modal-note">
             Task, related record, and status are locked to keep the automation chain consistent. Use the checkbox in
             the list to mark a task Done/Not Done — assignment is limited to agents on {requiredTeamFor(editing)}.
-          </p>
+          </p> */}
         </Modal>
       )}
     </div>
