@@ -495,7 +495,14 @@ body {
 }
 .pipeline-card-phone {
   font-size: 18px;
-  color: #888;
+  color: #555;
+}
+.pipeline-card-team {
+  font-style: italic;
+  font-size: 14px;
+  color: #555;
+  font-weight: 600;
+  margin-top: 4px;
 }
 .pipeline-empty-lane {
   display: flex;
@@ -505,6 +512,17 @@ body {
   color: #999;
   font-style: italic;
 }
+/* NECROWL */
+.pipeline-card-outcome {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 10px;
+  font-size: 10px;
+  font-weight: 800;
+  color: #fff;
+  margin-bottom: 6px;
+  letter-spacing: 0.5px;
+} 
 
 @media (max-width: 700px) {
   .pipeline-stage-row { flex-direction: column; }

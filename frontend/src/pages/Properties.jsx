@@ -17,8 +17,8 @@ const emptyForm = {
 // What each status change means for the deal's tasks/pipeline, shown as a confirm prompt
 // before it happens, since all three are destructive/irreversible to the task list.
 const STATUS_CHANGE_WARNINGS = {
-  Complete: 'This marks the deal as WON. All tasks for this property will be deleted and the pipeline stage will be set to "Closed - Won". Continue?',
-  Cancelled: 'This marks the deal as LOST. All tasks for this property will be deleted and the pipeline stage will be set to "Closed - Lost". Continue?',
+  Complete: 'This marks the deal as WON. All tasks for this property will be deleted and the pipeline stage will be set to "Closed". Continue?',
+  Cancelled: 'This marks the deal as LOST. All tasks for this property will be deleted and the pipeline stage will be set to "Closed". Continue?',
   'On Process': 'This reopens the deal. Any existing tasks for this property will be deleted, the pipeline stage will reset to "New Lead", and a fresh "Review Property Info" task will be created. Continue?'
 };
 
@@ -100,7 +100,7 @@ export default function Properties() {
             </div>
             <div className="form-field">
               <label>COUNTY</label>
-              <input placeholder="Travis County" value={form.county}
+              <input placeholder="Travis" value={form.county}
                 onChange={(e) => setForm({ ...form, county: e.target.value })} required maxLength={100} />
             </div>
             <div className="form-field">
@@ -244,7 +244,7 @@ export default function Properties() {
 
 
 
-
+//NECROWL
 
 // import { useEffect, useState } from 'react';
 // import Sidebar from '../components/Sidebar';
@@ -348,7 +348,7 @@ export default function Properties() {
 //             </div>
 //             <div className="form-field">
 //               <label>COUNTY</label>
-//               <input placeholder="Travis County" value={form.county}
+//               <input placeholder="Travis" value={form.county}
 //                 onChange={(e) => setForm({ ...form, county: e.target.value })} required />
 //             </div>
 //             <div className="form-field">
